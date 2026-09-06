@@ -1,0 +1,16 @@
+{
+  "name": "Dimensi Neuropsikologi dalam Mendesain Kurikulum",
+  "description": "Platform AI, Computer Vision, database siswa persisten, asesmen neuropsikologi non-diagnostik, diferensiasi Kurikulum Merdeka Fase B-C, Cambridge International, dan Singapore Curriculum.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API",
+    "PERSISTENT_SQLITE_DATABASE",
+    "COMPUTER_VISION",
+    "CURRICULUM_PHASE_B_C",
+    "CAMBRIDGE_INTERNATIONAL",
+    "SINGAPORE_CURRICULUM"
+  ]
+}

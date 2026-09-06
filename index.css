@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --app-ink: #17231f;
+    --app-muted: #64716b;
+    --app-line: #dce7e1;
+    --app-surface: rgba(255,255,255,.86);
+    --app-primary: #126b50;
+    --app-primary-2: #0d4f3c;
+    --app-accent: #d8a84e;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    min-width: 320px;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background:
+      radial-gradient(circle at 8% 0%, rgba(25,135,99,.10), transparent 28rem),
+      radial-gradient(circle at 92% 8%, rgba(216,168,78,.10), transparent 24rem),
+      #f5f8f6;
+    color: var(--app-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, .font-serif-natural {
+    font-family: 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
+  }
+
+  button, input, select, textarea { font: inherit; }
+  button { -webkit-tap-highlight-color: transparent; }
+}
+
+/* Premium application shell */
+.app-shell {
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(245,248,246,.92));
+}
+
+.app-main {
+  position: relative;
+}
+
+.app-main::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 180px;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(18,107,80,.035), transparent);
+}
+
+/* Make existing Tailwind cards feel like one coherent premium product. */
+.app-main > * {
+  animation: pageIn .28s ease both;
+}
+
+.app-main .bg-\[\#FAF7F2\],
+.app-main .bg-\[\#FAF8F5\],
+.app-main .bg-white {
+  box-shadow: 0 10px 30px rgba(27, 55, 44, .055);
+}
+
+.premium-card {
+  background: var(--app-surface);
+  border: 1px solid var(--app-line);
+  border-radius: 22px;
+  box-shadow: 0 16px 45px rgba(24, 56, 44, .07);
+  backdrop-filter: blur(12px);
+}
+
+.premium-gradient {
+  background: linear-gradient(135deg, #0f5d46 0%, #178261 58%, #1d8f6e 100%);
+  color: white;
+}
+
+/* Header refinements */
+header {
+  background: rgba(250, 252, 251, .92) !important;
+  border-color: rgba(205, 220, 213, .9) !important;
+  box-shadow: 0 8px 28px rgba(24, 56, 44, .06) !important;
+  backdrop-filter: blur(18px);
+}
+
+header .rounded-xl,
+header .rounded-2xl {
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+header button:hover { transform: translateY(-1px); }
+
+/* Touch-friendly controls for Android / Play Store WebView/PWA */
+button, [role="button"], select { min-height: 40px; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: #edf3ef; }
+::-webkit-scrollbar-thumb { background: #b9cbc2; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #719789; }
+
+@keyframes pageIn {
+  from { opacity: .78; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  .app-main { padding-bottom: 84px; }
+  header { position: sticky; }
+  header .max-w-7xl { max-width: 100%; }
+  header h1 { letter-spacing: -.02em; }
+  .premium-card { border-radius: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+@media print {
+  body { background-color: white !important; color: black !important; }
+  header, footer, nav, button { display: none !important; }
+  .print\:hidden { display: none !important; }
+  .print\:p-0 { padding: 0 !important; }
+  .print\:m-0 { margin: 0 !important; }
+  .print\:shadow-none { box-shadow: none !important; }
+  .print\:max-w-none { max-width: none !important; }
+}
